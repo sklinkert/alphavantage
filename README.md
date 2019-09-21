@@ -50,7 +50,7 @@ log.Infof("Today: SlowK=%f SlowD=%f", today.SlowK, today.SlowD)
 // By specific date
 indicator := indicators.ByDate(time.Now())
 if indicator != nil {
-		log.Infof("SlowK=%f SlowD=%f", indicator.SlowK, indicator.SlowD)
+	log.Infof("SlowK=%f SlowD=%f", indicator.SlowK, indicator.SlowD)
 }
 
 ```
