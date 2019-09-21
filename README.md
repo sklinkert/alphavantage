@@ -24,6 +24,19 @@ func main() {
 }
 ```
 
+### TimeSeries (prices)
+
+```go
+series, err := avClient.TimeSeries("SIX2.DEX", alphavantage.TimeSeriesDaily)
+if err != nil {
+		log.WithError(err).Fatal("TimeSeries() failed")
+}
+for date, price := range series.TimeSeriesDaily {
+		log.Infof("%s: Open=%f High=%f Low=%f Close=%f Volume=%d",
+			date, price.Open, price.High, price.Low, price.Close, price.Volume)
+}
+```
+
 
 
 ### Indicator STOCH
