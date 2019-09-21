@@ -20,7 +20,7 @@ import (
 
 func main() {
 	avClient := alphavantage.New("MYAPIKEY")
-  // ...
+ 	// ...
 }
 ```
 
@@ -32,8 +32,7 @@ if err != nil {
 	log.WithError(err).Fatal("TimeSeries() failed")
 }
 for date, price := range series.TimeSeriesDaily {
-	log.Infof("%s: Open=%f High=%f Low=%f Close=%f Volume=%d",
-			date, price.Open, price.High, price.Low, price.Close, price.Volume)
+	log.Infof("%s: Open=%f High=%f Low=%f Close=%f Volume=%d", date, price.Open, price.High, price.Low, price.Close, price.Volume)
 }
 ```
 
