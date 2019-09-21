@@ -37,6 +37,8 @@ func (c *Client) makeHTTPRequest(url string) ([]byte, error) {
 	if err != nil {
 		return nil, fmt.Errorf("building http request failed: %w", err)
 	}
+	req.Header.Set("User-Agent", "Go client: github.com/sklinkert/alphavantage")
+
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("http request failed: %w", err)
