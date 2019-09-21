@@ -31,7 +31,7 @@ func main() {
 ```go
 indicators, err := avClient.IndicatorStoch("EURUSD", alphavantage.IntervalDaily)
 if err != nil {
-	log.WithError(err).Error("IndicatorStoch() failed")
+	log.WithError(err).Fatal("IndicatorStoch() failed")
 }
 
 // Loop over all indicators
@@ -46,6 +46,12 @@ log.Infof("Latest: %s: SlowK=%f SlowD=%f", latestDate, latest.SlowK, latest.Slow
 // Get today only
 today := indicators.Today()
 log.Infof("Today: SlowK=%f SlowD=%f", today.SlowK, today.SlowD)
+
+// By specific date
+indicator := indicators.ByDate(time.Now())
+if indicator != nil {
+		log.Infof("SlowK=%f SlowD=%f", indicator.SlowK, indicator.SlowD)
+}
 
 ```
 
