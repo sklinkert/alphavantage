@@ -1,8 +1,8 @@
 # alphavantage
 
-Unofficial Golang www.alphavantage.co API implementation
+**Unofficial** Go/Golang www.alphavantage.co API implementation
 
-Disclaimer: This library is not associated with alphavantage or any of its affiliates or subsidiaries. If you use this library, you should contact them to make sure they are okay with how you intend to use it. Use this lib at your own risk.
+**Disclaimer**: This library is not associated with alphavantage or any of its affiliates or subsidiaries. If you use this library, you should contact them to make sure they are okay with how you intend to use it. Use this lib at your own risk.
 
 API doc reference: https://www.alphavantage.co/documentation/
 
@@ -15,17 +15,18 @@ package main
 
 import (
 	"github.com/sklinkert/alphavantage"
+  log "github.com/sirupsen/logrus" // optional
 )
 
 func main() {
   avClient := alphavantage.New("MYAPIKEY")
-  ...
+  // ...
 }
 ```
 
 
 
-Indicator STOCH
+### Indicator STOCH
 
 ```go
 indicators, err := avClient.IndicatorStoch("EURUSD", alphavantage.IntervalDaily)
