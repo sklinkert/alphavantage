@@ -8,4 +8,6 @@ const (
 	IntervalWeekly = Interval("weekly")
 	// IntervalDaily - Interval daily
 	IntervalDaily = Interval("daily")
+
+	dateLayout = "2006-02-01"
 )

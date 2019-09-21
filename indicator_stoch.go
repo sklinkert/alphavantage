@@ -3,6 +3,8 @@ package alphavantage
 import (
 	"encoding/json"
 	"fmt"
+	"sort"
+	"time"
 )
 
 // IndicatorStoch represents the overall struct for stochastics indicator
@@ -40,7 +42,8 @@ func toIndicatorStoch(buf []byte) (*IndicatorStoch, error) {
 	return indicatorStoch, nil
 }
 
-// IndicatorStoch fetches the
+// IndicatorStoch fetches the "STOCH" indicators for given symbol from API.
+// The order of dates in TechnicalAnalysis is random because it's a map.
 func (c *Client) IndicatorStoch(symbol string, interval Interval) (*IndicatorStoch, error) {
 	url := fmt.Sprintf("%s/query?function=%s&symbol=%s&interval=%s&apikey=%s",
 		baseURL, "STOCH", symbol, interval, c.apiKey)
@@ -54,4 +57,33 @@ func (c *Client) IndicatorStoch(symbol string, interval Interval) (*IndicatorSto
 	}
 
 	return indicator, nil
+}
+
+// Latest returns the most recent TechnicalStochAnalysis for given stoch.
+func (stoch *IndicatorStoch) Latest() (date string, latest *TechnicalStochAnalysis) {
+	dates := make([]string, len(stoch.TechnicalAnalysis))
+	for date := range stoch.TechnicalAnalysis {
+		dates = append(dates, date)
+	}
+	sort.Strings(dates)
+	date = dates[len(dates)-1]
+	latestVal, _ := stoch.TechnicalAnalysis[date]
+	latest = &latestVal
+	return
+}
+
+// Today returns TechnicalStochAnalysis for today.
+func (stoch *IndicatorStoch) Today() *TechnicalStochAnalysis {
+	today := time.Now()
+	return stoch.ByDate(today)
+}
+
+// ByDate returns TechnicalStochAnalysis for the given date.
+func (stoch *IndicatorStoch) ByDate(date time.Time) *TechnicalStochAnalysis {
+	day := date.Format("2006-02-01")
+	item, exists := stoch.TechnicalAnalysis[day]
+	if !exists {
+		return nil
+	}
+	return &item
 }
