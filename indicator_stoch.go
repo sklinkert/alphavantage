@@ -1,6 +1,9 @@
 package alphavantage
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 // IndicatorStoch represents the overall struct for stochastics indicator
 // Example https://www.alphavantage.co/query?function=STOCH&symbol=MSFT&interval=daily&apikey=demo
@@ -35,4 +38,20 @@ func toIndicatorStoch(buf []byte) (*IndicatorStoch, error) {
 		return nil, err
 	}
 	return indicatorStoch, nil
+}
+
+// IndicatorStoch fetches the
+func (c *Client) IndicatorStoch(symbol string, interval Interval) (*IndicatorStoch, error) {
+	url := fmt.Sprintf("%s/query?function=%s&symbol=%s&interval=%s&apikey=%s",
+		baseURL, "STOCH", symbol, interval, c.apiKey)
+	body, err := c.makeHTTPRequest(url)
+	if err != nil {
+		return nil, err
+	}
+	indicator, err := toIndicatorStoch(body)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse response: %w", err)
+	}
+
+	return indicator, nil
 }
