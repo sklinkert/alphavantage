@@ -15,7 +15,7 @@ package main
 
 import (
 	"github.com/sklinkert/alphavantage"
-  log "github.com/sirupsen/logrus" // optional
+	log "github.com/sirupsen/logrus" // optional
 )
 
 func main() {
@@ -45,7 +45,7 @@ log.Infof("Latest: %s: SlowK=%f SlowD=%f", latestDate, latest.SlowK, latest.Slow
 
 // Get today only
 today := indicators.Today()
-log.Infof("Todat:SlowK=%f SlowD=%f", today.SlowK, today.SlowD)
+log.Infof("Today: SlowK=%f SlowD=%f", today.SlowK, today.SlowD)
 
 ```
 
