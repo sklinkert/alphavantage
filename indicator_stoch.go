@@ -80,7 +80,7 @@ func (stoch *IndicatorStoch) Today() *TechnicalStochAnalysis {
 
 // ByDate returns TechnicalStochAnalysis for the given date.
 func (stoch *IndicatorStoch) ByDate(date time.Time) *TechnicalStochAnalysis {
-	day := date.Format("2006-02-01")
+	day := date.Format(dateLayout)
 	item, exists := stoch.TechnicalAnalysis[day]
 	if !exists {
 		return nil

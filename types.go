@@ -12,7 +12,7 @@ const (
 	// IntervalDaily - Interval daily
 	IntervalDaily = Interval("daily")
 
-	dateLayout = "2006-02-01"
+	dateLayout = "2006-01-02"
 
 	// TimeSeriesDaily - Time series for daily prices
 	TimeSeriesDaily = TimeSeriesInterval("TIME_SERIES_DAILY")
