@@ -6,6 +6,8 @@
 
 API doc reference: https://www.alphavantage.co/documentation/
 
+**Note**: Requests are synchronised and throttled automatically to not flood the API servers. One request every 15 seconds is possible at the moment.
+
 ## Usage
 
 ### New client
