@@ -14,8 +14,8 @@ const (
 
 	// DateFormat is the date format used by the API
 	DateFormat = "2006-01-02"
-	// DateFormatWithTime datetime format used by the API
-	DateFormatWithTime = "2006-01-02 15:04:05"
+	// DateTimeFormat datetime format used by the API
+	DateTimeFormat = "2006-01-02 15:04:05"
 
 	// TimeSeriesDaily - Time series for daily prices
 	TimeSeriesDaily = TimeSeriesInterval("TIME_SERIES_DAILY")
