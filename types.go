@@ -12,7 +12,10 @@ const (
 	// IntervalDaily - Interval daily
 	IntervalDaily = Interval("daily")
 
-	dateLayout = "2006-01-02"
+	// DateFormat is the date format used by the API
+	DateFormat = "2006-01-02"
+	// DateFormatWithTime datetime format used by the API
+	DateFormatWithTime = "2006-01-02 15:04:05"
 
 	// TimeSeriesDaily - Time series for daily prices
 	TimeSeriesDaily = TimeSeriesInterval("TIME_SERIES_DAILY")
