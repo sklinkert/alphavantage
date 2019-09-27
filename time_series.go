@@ -88,7 +88,7 @@ func (ts *TimeSeries) Today() *TimeSeriesData {
 // ByDate returns the dataset for the given date.
 func (ts *TimeSeries) ByDate(date time.Time) *TimeSeriesData {
 	dataset := ts.getFilledData()
-	day := date.Format(dateLayout)
+	day := date.Format(DateFormat)
 	item, exists := dataset[day]
 	if !exists {
 		return nil
