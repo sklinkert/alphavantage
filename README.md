@@ -29,7 +29,7 @@ func main() {
 ### TimeSeries (prices)
 
 ```go
-series, err := avClient.TimeSeries("SIX2.DEX", alphavantage.TimeSeriesDaily)
+series, err := avClient.TimeSeries("SIX2.DEX", alphavantage.TimeSeriesDaily, alphavantage.OutPutSizeCompact)
 if err != nil {
 	log.WithError(err).Fatal("TimeSeries() failed")
 }

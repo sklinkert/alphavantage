@@ -41,8 +41,8 @@ func toTimeSeries(buf []byte) (*TimeSeries, error) {
 
 // TimeSeries fetches the time series for given symbol from API.
 // The order of dates in returned object is random because it's a map.
-func (c *Client) TimeSeries(symbol string, interval TimeSeriesInterval) (*TimeSeries, error) {
-	url := fmt.Sprintf("%s/query?function=%s&symbol=%s&apikey=%s", baseURL, interval, symbol, c.apiKey)
+func (c *Client) TimeSeries(symbol string, interval TimeSeriesInterval, outputSize OutPutSize) (*TimeSeries, error) {
+	url := fmt.Sprintf("%s/query?function=%s&symbol=%s&apikey=%s&outputsize=%s", baseURL, interval, symbol, c.apiKey, outputSize)
 	body, err := c.makeHTTPRequest(url)
 	if err != nil {
 		return nil, err
