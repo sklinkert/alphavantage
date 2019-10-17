@@ -37,6 +37,7 @@ func TestToTimeSeries(t *testing.T) {
 	assert.NoError(t, err)
 	assert.EqualStrings(t, "SIX2.DEX", timeSeries.Metadata.Symbol)
 	assert.EqualInt(t, 2, len(timeSeries.TimeSeriesWeekly))
+	assert.EqualInt(t, 2, timeSeries.Len())
 
 	ta1, exists := timeSeries.TimeSeriesWeekly["2019-09-20"]
 	if !exists {

@@ -65,6 +65,12 @@ func (ts *TimeSeries) getFilledData() map[string]TimeSeriesData {
 	return nil
 }
 
+// Len returns the number of data items
+func (ts *TimeSeries) Len() int {
+	fd := ts.getFilledData()
+	return len(fd)
+}
+
 // Latest returns the most recent item
 func (ts *TimeSeries) Latest() (date string, latest *TimeSeriesData) {
 	datasets := ts.getFilledData()
