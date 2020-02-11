@@ -33,19 +33,20 @@ type TimeSeriesData struct {
 
 // TimeSeriesAdjusted - like TimeSeries, but inclused dividends and adjusted close
 type TimeSeriesAdjusted struct {
-	Metadata         TimeSeriesMetadata        `json:"Meta Data"`
-	TimeSeriesAdjusted  map[string]TimeSeriesAdjustedData `json:"Time Series (Daily)"`
+	Metadata           TimeSeriesMetadata                `json:"Meta Data"`
+	TimeSeriesAdjusted map[string]TimeSeriesAdjustedData `json:"Time Series (Daily)"`
 }
 
 // TimeSeriesAdjustedData - like TimeSeries, but inclused dividends and adjusted close
 type TimeSeriesAdjustedData struct {
-	Open   float64 `json:"1. open,string"`
-	High   float64 `json:"2. high,string"`
-	Low    float64 `json:"3. low,string"`
-	Close  float64 `json:"4. close,string"`
-	Volume uint64  `json:"6. volume,string"`
-	DividendAmount float64  `json:"7. dividend amount,string"`
-	SplitCoefficient float64  `json:"8. split coefficient,string"`
+	Open             float64 `json:"1. open,string"`
+	High             float64 `json:"2. high,string"`
+	Low              float64 `json:"3. low,string"`
+	Close            float64 `json:"4. close,string"`
+	AdjustedClose    float64 `json:"5. adjusted close,string"`
+	Volume           uint64  `json:"6. volume,string"`
+	DividendAmount   float64 `json:"7. dividend amount,string"`
+	SplitCoefficient float64 `json:"8. split coefficient,string"`
 }
 
 func toTimeSeries(buf []byte) (*TimeSeries, error) {

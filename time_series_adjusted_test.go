@@ -53,4 +53,5 @@ func TestToTimeSeriesAdjusted(t *testing.T) {
 	assert.EqualInt(t, 41524766, int(ta1.Volume))
 	assert.EqualFloat64(t, 3.00, ta1.DividendAmount)
 	assert.EqualFloat64(t, 1.00, ta1.SplitCoefficient)
+	assert.EqualFloat64(t, 184.3900, ta1.AdjustedClose)
 }
