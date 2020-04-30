@@ -78,3 +78,13 @@ if err != nil {
 
 // See more examples at Indicator STOCH section
 ```
+
+### Global Quote
+
+```go
+	globalQuote, err := avClient.GlobalQuote("EURUSD")
+	if err != nil {
+		log.WithError(err).Fatal("GlobalQuote() failed")
+	}
+	log.Infof("%s %f", globalQuote.LatestTradingDay, globalQuote.Price)
+```
