@@ -70,9 +70,11 @@ if indicator != nil {
 ### Indicator SMA
 
 ```go
-perdiod := 200
+period := 200
 indicators, err := avClient.IndicatorSMA("EURUSD", alphavantage.IntervalDaily, period)
 if err != nil {
 	log.WithError(err).Fatal("IndicatorSMA() failed")
 }
+
+// See more examples at Indicator STOCH section
 ```
