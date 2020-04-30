@@ -58,6 +58,9 @@ func (c *Client) IndicatorSMA(symbol string, interval Interval, timePeriod int) 
 
 // Latest returns the most recent TechnicalSMAAnalysis for given stoch.
 func (stoch *IndicatorSMA) Latest() (date string, latest *TechnicalSMAAnalysis) {
+	if len(stoch.TechnicalAnalysis) == 0 {
+		return "", nil
+	}
 	dates := make([]string, len(stoch.TechnicalAnalysis))
 	for date := range stoch.TechnicalAnalysis {
 		dates = append(dates, date)

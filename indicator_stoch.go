@@ -62,6 +62,9 @@ func (c *Client) IndicatorStoch(symbol string, interval Interval) (*IndicatorSto
 
 // Latest returns the most recent TechnicalStochAnalysis for given stoch.
 func (stoch *IndicatorStoch) Latest() (date string, latest *TechnicalStochAnalysis) {
+	if len(stoch.TechnicalAnalysis) == 0 {
+		return "", nil
+	}
 	dates := make([]string, len(stoch.TechnicalAnalysis))
 	for date := range stoch.TechnicalAnalysis {
 		dates = append(dates, date)
