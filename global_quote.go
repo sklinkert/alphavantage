@@ -33,7 +33,7 @@ func toGlobalQuote(buf []byte) (*GlobalQuote, error) {
 }
 
 // GlobalQuote fetches data from the Global Quote endpoint for the given symbol
-func (c *Client) GlobalQuote(symbol string, interval Interval) (*GlobalQuote, error) {
+func (c *Client) GlobalQuote(symbol string) (*GlobalQuote, error) {
 	const functionName = "GLOBAL_QUOTE"
 	url := fmt.Sprintf("%s/query?function=%s&symbol=%s&apikey=%s",
 		baseURL, functionName, symbol, c.apiKey)
