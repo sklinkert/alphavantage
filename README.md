@@ -38,8 +38,6 @@ for date, price := range series.TimeSeriesDaily {
 }
 ```
 
-
-
 ### Indicator STOCH
 
 ```go
@@ -69,3 +67,12 @@ if indicator != nil {
 
 ```
 
+### Indicator SMA
+
+```go
+perdiod := 200
+indicators, err := avClient.IndicatorSMA("EURUSD", alphavantage.IntervalDaily, period)
+if err != nil {
+	log.WithError(err).Fatal("IndicatorSMA() failed")
+}
+```

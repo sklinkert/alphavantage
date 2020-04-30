@@ -45,8 +45,9 @@ func toIndicatorStoch(buf []byte) (*IndicatorStoch, error) {
 // IndicatorStoch fetches the "STOCH" indicators for given symbol from API.
 // The order of dates in TechnicalAnalysis is random because it's a map.
 func (c *Client) IndicatorStoch(symbol string, interval Interval) (*IndicatorStoch, error) {
+	const functionName = "STOCH"
 	url := fmt.Sprintf("%s/query?function=%s&symbol=%s&interval=%s&apikey=%s",
-		baseURL, "STOCH", symbol, interval, c.apiKey)
+		baseURL, functionName, symbol, interval, c.apiKey)
 	body, err := c.makeHTTPRequest(url)
 	if err != nil {
 		return nil, err
