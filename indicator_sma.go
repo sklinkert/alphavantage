@@ -51,7 +51,7 @@ func toIndicatorSMA(buf []byte) (*IndicatorSMA, error) {
 
 // IndicatorSMA fetches the "SMA" indicators for given symbol from API.
 // The order of dates in TechnicalAnalysis is random because it's a map.
-func (c *Client) IndicatorSMA(symbol string, interval Interval, seriesType string, timePeriod int) (*IndicatorSMA, error) {
+func (c *Client) IndicatorSMA(symbol string, interval Interval, timePeriod int, seriesType string) (*IndicatorSMA, error) {
 	const functionName = "SMA"
 	url := fmt.Sprintf("%s/query?function=%s&symbol=%s&interval=%s&time_period=%d&series_type=%s&apikey=%s",
 		baseURL, functionName, symbol, interval, timePeriod, seriesType, c.apiKey)
