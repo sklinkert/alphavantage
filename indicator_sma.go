@@ -7,6 +7,17 @@ import (
 	"time"
 )
 
+const (
+	// SeriesTypeOpen - Series Type Open
+	SeriesTypeOpen = "open"
+	// SeriesTypeHigh - Series Type High
+	SeriesTypeHigh = "high"
+	// SeriesTypeLow - Series Type Low
+	SeriesTypeLow = "low"
+	// SeriesTypeClose - Series Type Close
+	SeriesTypeClose = "close"
+)
+
 // IndicatorSMA represents the overall struct for stochastics indicator
 // Example https://www.alphavantage.co/query?function=STOCH&symbol=MSFT&interval=daily&apikey=demo
 type IndicatorSMA struct {
@@ -40,10 +51,10 @@ func toIndicatorSMA(buf []byte) (*IndicatorSMA, error) {
 
 // IndicatorSMA fetches the "SMA" indicators for given symbol from API.
 // The order of dates in TechnicalAnalysis is random because it's a map.
-func (c *Client) IndicatorSMA(symbol string, interval Interval, timePeriod int) (*IndicatorSMA, error) {
+func (c *Client) IndicatorSMA(symbol string, interval Interval, seriesType string, timePeriod int) (*IndicatorSMA, error) {
 	const functionName = "SMA"
-	url := fmt.Sprintf("%s/query?function=%s&symbol=%s&interval=%s&time_period=%d&apikey=%s",
-		baseURL, functionName, symbol, interval, timePeriod, c.apiKey)
+	url := fmt.Sprintf("%s/query?function=%s&symbol=%s&interval=%s&time_period=%d&series_type=%s&apikey=%s",
+		baseURL, functionName, symbol, interval, timePeriod, seriesType, c.apiKey)
 	body, err := c.makeHTTPRequest(url)
 	if err != nil {
 		return nil, err

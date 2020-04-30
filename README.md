@@ -71,7 +71,7 @@ if indicator != nil {
 
 ```go
 period := 200
-indicators, err := avClient.IndicatorSMA("EURUSD", alphavantage.IntervalDaily, period)
+indicators, err := avClient.IndicatorSMA("EURUSD", alphavantage.IntervalDaily, period, alphavantage.SeriesTypeClose)
 if err != nil {
 	log.WithError(err).Fatal("IndicatorSMA() failed")
 }
