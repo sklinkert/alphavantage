@@ -5,18 +5,11 @@ import (
 	"fmt"
 )
 
-/*
-import (
-	`json:"encoding/json"
-)
-*/
-
 type IncomeStatements struct {
 	Symbol           string            `json:"symbol"`
 	AnnualReports    []AnnualReport    `json:"annualReports"`
 	QuarterlyReports []QuarterlyReport `json:"quarterlyReports"`
 }
-
 type AnnualReport struct {
 	FiscalDateEnding                  string `json:"fiscalDateEnding"`
 	ReportedCurrency                  string `json:"reportedCurrency"`
