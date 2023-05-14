@@ -3,6 +3,8 @@ package alphavantage
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
+	"strings"
 )
 
 // GlobalQuoteResponse - encapsulates global quote repsonse
@@ -21,7 +23,8 @@ type GlobalQuote struct {
 	LatestTradingDay string  `json:"07. latest trading day"`
 	PreviousClose    float64 `json:"08. previous close,string"`
 	Change           float64 `json:"09. change,string"`
-	// ChangePercent    float64 `json:"10. change percent,string"`
+	ChangePercentStr string  `json:"10. change percent"`
+	ChangePercent    float64
 }
 
 func toGlobalQuote(buf []byte) (*GlobalQuote, error) {
@@ -46,5 +49,10 @@ func (c *Client) GlobalQuote(symbol string) (*GlobalQuote, error) {
 		return nil, fmt.Errorf("failed to parse response: %w", err)
 	}
 
+	globalQuote.ChangePercentStr = strings.ReplaceAll(globalQuote.ChangePercentStr, "%", "")
+	globalQuote.ChangePercent, err = strconv.ParseFloat(globalQuote.ChangePercentStr, 64)
+	if err != nil {
+		return nil, fmt.Errorf("cannot parse field ChangePercent(%q): %v", globalQuote.ChangePercentStr, err)
+	}
 	return globalQuote, nil
 }

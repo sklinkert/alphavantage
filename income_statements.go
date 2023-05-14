@@ -83,10 +83,6 @@ func (c *Client) IncomeStatements(symbol string) (*IncomeStatements, error) {
 	if err != nil {
 		return nil, err
 	}
-	incomeStatements, err := toIncomeStatements(body)
-	if err != nil {
-		return nil, fmt.Errorf("failed to parse response: %w", err)
-	}
 
-	return incomeStatements, nil
+	return toIncomeStatements(body)
 }
